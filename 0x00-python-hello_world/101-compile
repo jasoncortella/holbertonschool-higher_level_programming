@@ -1,4 +1,2 @@
 #!/bin/bash
-python3 -m py_compile $PYFILE
-mv ./__pycache__/* $PYFILEc
-rmdir __pycache__
+python3 -m compileall -b $PYFILE
