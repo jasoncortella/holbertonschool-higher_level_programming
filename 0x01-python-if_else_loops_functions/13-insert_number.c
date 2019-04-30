@@ -1,7 +1,4 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 
 /**
  * insert_node - inserts a number into a sorted singly linekd list
@@ -16,7 +13,7 @@ listint_t *insert_node(listint_t **head, int number)
 
 	if (!head)
 		return (NULL);
-	while (number > current->n)
+	while (number > current->next->n)
 		current = current->next;
 	new = malloc(sizeof(listint_t));
 	if (!new)
