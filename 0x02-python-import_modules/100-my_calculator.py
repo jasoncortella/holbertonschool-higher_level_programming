@@ -14,9 +14,9 @@ if __name__ == "__main__":
         result = a - b
     elif op == '*':
         result = a * b
-    elif op = '/':
+    elif op == '/':
         result = a / b
-    else
+    else:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
     print("{} {} {} = {}".format(a, op, b, result))
