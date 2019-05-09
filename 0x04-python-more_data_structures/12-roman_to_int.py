@@ -18,7 +18,7 @@ def rconvert(r):
 
 def roman_to_int(roman_string):
     if type(roman_string) is not str or roman_string is None:
-        return None
+        return 0
     result = 0
     rlen = len(roman_string)
     for i in range(rlen):
