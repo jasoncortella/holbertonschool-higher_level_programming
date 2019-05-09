@@ -16,6 +16,7 @@ def rconvert(r):
         return 1000
     return 0
 
+
 def roman_to_int(roman_string):
     if type(roman_string) is not str or roman_string is None:
         return 0
