@@ -15,8 +15,9 @@ def rconvert(r):
     if (r == 'M'):
         return 1000
 
+
 def roman_to_int(roman_string):
-    if type(roman_string) is not str or roman_string == None:
+    if type(roman_string) is not str or roman_string is None:
         return None
     result = 0
     rlen = len(roman_string)
