@@ -7,7 +7,6 @@ class Square:
             self.__size = size
 
     @property
-
     def size(self):
         """Gets size."""
         return self.__size
@@ -28,8 +27,7 @@ class Square:
         return False
 
     @size.setter
-
     def size(self, value):
         """Sets size."""
-        if  self.__valid_size(value):
+        if self.__valid_size(value):
             self.__size = value
