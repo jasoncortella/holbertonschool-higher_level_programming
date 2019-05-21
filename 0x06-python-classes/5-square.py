@@ -7,7 +7,6 @@ class Square:
             self.__size = size
 
     @property
-
     def size(self):
         """Gets size."""
         return self.__size
@@ -20,7 +19,7 @@ class Square:
         """Prints the square, accounting for size"""
         if self.__size == 0:
             print()
-        print(('#' * self.__size + '\n') * self.__size, end = '')
+        print(('#' * self.__size + '\n') * self.__size, end='')
 
     def __valid_size(self, size):
         """Checks if a variable is a positive integer."""
@@ -34,7 +33,6 @@ class Square:
         return False
 
     @size.setter
-
     def size(self, value):
         """Sets size."""
         if self.__valid_size(value):

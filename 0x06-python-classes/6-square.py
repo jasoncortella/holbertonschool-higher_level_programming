@@ -9,7 +9,6 @@ class Square:
             self.__position = position
 
     @property
-
     def size(self):
         """Gets size."""
         return self.__size
@@ -24,7 +23,7 @@ class Square:
 
     def my_print(self):
         """Prints the square, accounting for size and position"""
-        print('\n' * self.__position[1], end = '')
+        print('\n' * self.__position[1], end='')
         if self.__size == 0:
             print()
         for i in range(self.__size):
@@ -53,7 +52,6 @@ class Square:
         return False
 
     @size.setter
-
     def size(self, value):
         """Sets size."""
         if self.__valid_size(value):
