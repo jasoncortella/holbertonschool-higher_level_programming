@@ -3,14 +3,17 @@ class Square:
     """A class to define a square."""
     def __init__(self, size=0, position=(0, 0)):
         """Initialize the class."""
-            self.size = size
-            self.position = position
+        if self.__valid_size(size):
+            self.__size = size
+        if self.__valid_position(position):
+            self.__position = position
 
     @property
     def size(self):
         """Gets size."""
         return self.__size
 
+    @property
     def position(self):
         """Gets position."""
         return self.__position
