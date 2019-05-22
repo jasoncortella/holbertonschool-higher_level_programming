@@ -29,7 +29,6 @@ class Square:
         for i in range(self.__size):
             print(' ' * self.__position[0] + '#' * self.__size)
 
-
     def __valid_size(self, size):
         """Checks if a variable is a positive integer."""
         if isinstance(size, int):
