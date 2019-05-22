@@ -22,11 +22,13 @@ class Square:
 
     def my_print(self):
         """Prints the square, accounting for size and position"""
-        print('\n' * self.__position[1], end='')
         if self.__size == 0:
             print()
+            return
+        print('\n' * self.__position[1], end='')
         for i in range(self.__size):
             print(' ' * self.__position[0] + '#' * self.__size)
+
 
     def __valid_size(self, size):
         """Checks if a variable is a positive integer."""
