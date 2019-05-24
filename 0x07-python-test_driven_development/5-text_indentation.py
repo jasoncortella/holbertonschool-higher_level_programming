@@ -19,3 +19,17 @@ def text_indentation(text):
     Raises:
         - TypeError if text is not a string
     """
+
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+
+    skipspaces = True
+    for c in text:
+        if c == ' ' and skipspaces == True:
+            continue
+        skipspaces = False
+        if all(c != x for x in ('.', '?', ':')):
+            print(c, end='')
+        else:
+            print(c, end = '\n\n')
+            skipspaces = True
