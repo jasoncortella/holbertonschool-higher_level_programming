@@ -77,3 +77,77 @@ TypeError: m_a must be a list
 >>> matrix_mul(m_a, m_b)
 Traceback (most recent call last):
 TypeError: m_b must be a list
+
+>>> m_a = [1, 2]
+>>> m_b = [
+... [3, 4],
+...     [5, 6]
+...     ]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+>>> m_b = [1, 2]
+>>> m_a = [
+... [3, 4],
+...     [5, 6]
+...     ]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+>>> m_a = [
+... [3, 4],
+...     [5, 6]
+...     ]
+>>> m_b = [
+... ["3", 4],
+...     [5, 6]
+...     ]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+>>> m_a = [
+... [3, 4, 5],
+...     [5, 6]
+...     ]
+>>> m_b = [
+... [3, 4],
+...     [5, 6]
+...     ]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: each row of m_a must should be of the same size
+
+>>> m_a = [
+... [3, 4],
+...     [5, 6]
+...     ]
+>>> m_b = [
+... [3, 4, 5],
+...     [5, 6]
+...     ]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: each row of m_b must should be of the same size
+
+>>> m_a = [
+... [3, 4, 5, 6, 7, 8],
+...     [5, 6, 7, 8, 9, 10]
+...     ]
+>>> m_b = [
+... [3, 4, 5, 6],
+...     [5, 6, 7, 8]
+...     ]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
+
+>>> matrix_mul(m_a)
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+>>> matrix_mul()
+Traceback (most recent call last):
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+

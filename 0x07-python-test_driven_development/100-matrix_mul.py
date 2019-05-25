@@ -38,10 +38,10 @@ def matrix_mul(m_a, m_b):
         raise ValueError("m_b can't be empty")
 
     if any(not isinstance(elm, (int, float))
-                for elm in [x for row in m_a for x in row]):
+           for elm in [x for row in m_a for x in row]):
         raise TypeError("m_a should contain only integers or floats")
     if any(not isinstance(elm, (int, float))
-                for elm in [x for row in m_b for x in row]):
+           for elm in [x for row in m_b for x in row]):
         raise TypeError("m_b should contain only integers or floats")
 
     if any(len(row) != len(m_a[0]) for row in m_a):
@@ -56,7 +56,7 @@ def matrix_mul(m_a, m_b):
     for i in range(len(m_b[0])):
         inverted_row = []
         for j in range(len(m_b)):
-           inverted_row.append(m_b[j][i])
+            inverted_row.append(m_b[j][i])
         m_b_invert.append(inverted_row)
 
     ret_matrix = []
