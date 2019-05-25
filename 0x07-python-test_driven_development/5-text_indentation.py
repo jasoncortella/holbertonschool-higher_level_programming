@@ -25,11 +25,11 @@ def text_indentation(text):
 
     skipspaces = True
     for c in text:
-        if c == ' ' and skipspaces == True:
+        if c == ' ' and skipspaces is True:
             continue
         skipspaces = False
         if all(c != x for x in ('.', '?', ':')):
             print(c, end='')
         else:
-            print(c, end = '\n\n')
+            print(c, end='\n\n')
             skipspaces = True
