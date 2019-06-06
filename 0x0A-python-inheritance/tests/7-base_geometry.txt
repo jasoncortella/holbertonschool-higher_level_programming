@@ -1,0 +1,69 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> bg = BaseGeometry(None)
+Traceback (most recent call last):
+TypeError: object() takes no parameters
+
+>>> bg = BaseGeometry(1)
+Traceback (most recent call last):
+TypeError: object() takes no parameters
+
+>>> bg = BaseGeometry()
+>>> type(bg)
+<class '7-base_geometry.BaseGeometry'>
+
+>>> print(bg)
+<7-base_geometry.BaseGeometry object at 0x7efc5ae56e10>
+
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+>>> print(bg.area)
+<bound method BaseGeometry.area of <7-base_geometry.BaseGeometry object at 0x7efc5ae56e10>>
+
+>>> bg.integer_validator("string", 1)
+>>> print(bg.integer_validator)
+<bound method BaseGeometry.integer_validator of <7-base_geometry.BaseGeometry object at 0x7efc5ae56e10>>
+
+>>> bg.integer_validator("string", "string")
+Traceback (most recent call last):
+TypeError: string must be an integer
+
+>>> bg.integer_validator("list", [1, 2])
+Traceback (most recent call last):
+TypeError: list must be an integer
+
+>>> bg.integer_validator("none", None)
+Traceback (most recent call last):
+TypeError: none must be an integer
+
+>>> bg.integer_validator("tuple", (1, 2))
+Traceback (most recent call last):
+TypeError: tuple must be an integer
+
+>>> bg.integer_validator("bool", True)
+Traceback (most recent call last):
+TypeError: bool must be an integer
+
+>>> bg.integer_validator("dict", {1, 2})
+Traceback (most recent call last):
+TypeError: dict must be an integer
+
+>>> bg.integer_validator(1, 2)
+
+>>> bg.integer_validator("int is 0", 0)
+Traceback (most recent call last):
+ValueError: int is 0 must be greater than 0
+
+>>> bg.integer_validator("int is negative", -1)
+Traceback (most recent call last):
+ValueError: int is negative must be greater than 0
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("string")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'

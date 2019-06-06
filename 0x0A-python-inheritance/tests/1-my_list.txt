@@ -1,0 +1,90 @@
+>>> MyList = __import__('1-my_list').MyList
+
+>>> my_list = MyList(None)
+Traceback (most recent call last):
+TypeError: 'NoneType' object is not iterable
+
+>>> my_list = MyList([1, 2, 3], [4, 5, 6])
+Traceback (most recent call last):
+TypeError: list() takes at most 1 argument (2 given)
+
+>>> my_list = MyList()
+
+>>> my_list.print_sorted(3)
+Traceback (most recent call last):
+TypeError: print_sorted() takes 1 positional argument but 2 were given
+
+>>> type(my_list)
+<class '1-my_list.MyList'>
+
+>>> print(my_list)
+[]
+
+>>> my_list.print_sorted()
+[]
+
+>>> my_list = MyList([4, 5, 6])
+
+>>> print(my_list)
+[4, 5, 6]
+
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> print(my_list)
+[4, 5, 6, 1, 2, 3]
+
+>>> my_list[0] = 7
+>>> print(my_list)
+[7, 5, 6, 1, 2, 3]
+
+>>> my_list.print_sorted()
+[1, 2, 3, 5, 6, 7]
+
+>>> print(my_list)
+[7, 5, 6, 1, 2, 3]
+
+>>> my_list.remove(3)
+>>> print(my_list)
+[7, 5, 6, 1, 2]
+
+>>> my_list = MyList()
+>>> my_list.append("does")
+>>> my_list.append("it")
+>>> my_list.append("work")
+>>> my_list.append("with")
+>>> my_list.append("strings")
+>>> print(my_list)
+['does', 'it', 'work', 'with', 'strings']
+
+>>> my_list.print_sorted()
+['does', 'it', 'strings', 'with', 'work']
+
+>>> my_list = MyList()
+>>> my_list.append("strings")
+>>> my_list.append("and")
+>>> my_list.append("integers")
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> print(my_list)
+['strings', 'and', 'integers', 1, 2]
+
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+TypeError: unorderable types: int() < str()
+
+>>> my_list = MyList(5)
+Traceback (most recent call last):
+TypeError: 'int' object is not iterable
+
+>>> my_list = MyList("string")
+>>> print(my_list)
+['s', 't', 'r', 'i', 'n', 'g']
+
+>>> my_list = MyList((1, 2))
+>>> print(my_list)
+[1, 2]
+
+>>> my_list = MyList(True)
+Traceback (most recent call last):
+TypeError: 'bool' object is not iterable
