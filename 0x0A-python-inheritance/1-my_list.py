@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""A module"""
+"""a class MyList that inherits from list"""
+
 
 class MyList(list):
     """Define inherited list class MyList"""

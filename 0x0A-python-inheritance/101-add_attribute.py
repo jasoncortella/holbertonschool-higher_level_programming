@@ -1,4 +1,6 @@
-c#!/usr/bin/python3
+#!/usr/bin/python3
+"""Function adds attribute if possible"""
+
 
 def add_attribute(obj, attribute, value):
     """Add an atribute to an object if it is possible"""
