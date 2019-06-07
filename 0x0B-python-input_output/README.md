@@ -1,6 +1,8 @@
 # 0x0B. Python - Input/Output
 ## This directory contans answer files to Holberton School Python project 0x0B
 
+:horse:
+
 ### 0. Read file
 * a function that reads a text file (UTF8) and prints it to stdout:
 * File: 0-read_file.py
