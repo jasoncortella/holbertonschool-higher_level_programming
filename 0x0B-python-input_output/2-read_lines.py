@@ -16,5 +16,5 @@ def read_lines(filename="", nb_lines=0):
         lineCount = 0
         for line in myFile:
             if lineCount < nb_lines or nb_lines <= 0:
-                print(line, end = "")
+                print(line, end="")
             lineCount += 1

@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Function to return dict description for JSON serialization"""
 
-import json
-
 
 def class_to_json(obj):
     """returns the dictionary description with simple data structure
