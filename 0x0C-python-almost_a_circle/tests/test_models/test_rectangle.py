@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """Unittest for base class"""
 
-
+import sys
+import io
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
@@ -338,6 +339,230 @@ class TestRectangleArea(unittest.TestCase):
         r.width = 6
         r.height = 7
         self.assertEqual(42, r.area())
+
+class TestRectangleDisplay(unittest.TestCase):
+    """Define unittests for testing Rectangle stdout printing"""
+
+    @staticmethod
+    def captured_output(rectangle):
+        output = io.StringIO()
+        sys.stdout = output
+        rectangle.display()
+        sys.stdout = sys.__stdout__
+        return output
+
+    def test_regtangle_str_hw(self):
+        r = Rectangle(2, 1)
+        output = TestRectangleDisplay.captured_output(r)
+        verify = "##\n".format(r.id)
+        self.assertEqual(output.getvalue(), verify)
+
+    def test_rectangle_str_hwx(self):
+        r = Rectangle(2, 1, 1)
+        output = TestRectangleDisplay.captured_output(r)
+        verify = " ##\n".format(r.id)
+        self.assertEqual(output.getvalue(), verify)
+
+    def test_rectangle_str_hwxy(self):
+        r = Rectangle(2, 1, 1, 1)
+        output = TestRectangleDisplay.captured_output(r)
+        verify = "\n ##\n".format(r.id)
+        self.assertEqual(output.getvalue(), verify)
+
+    def test_rectangle_str_hwxyi(self):
+        r = Rectangle(2, 1, 1, 1, 30)
+        output = TestRectangleDisplay.captured_output(r)
+        verify = "\n ##\n"
+        self.assertEqual(output.getvalue(), verify)
+
+
+class TestRectangle__str__(unittest.TestCase):
+    """Define unittests for testing Rectangle __str__ method"""
+
+    @staticmethod
+    def captured_output(rectangle):
+        output = io.StringIO()
+        sys.stdout = output
+        print(rectangle)
+        sys.stdout = sys.__stdout__
+        return output
+
+    def test_regtangle_str_hw(self):
+        r = Rectangle(4, 6)
+        output = TestRectangle__str__.captured_output(r)
+        verify = "[Rectangle] ({}) 0/0 - 4/6\n".format(r.id)
+        self.assertEqual(output.getvalue(), verify)
+
+    def test_rectangle_str_hwx(self):
+        r = Rectangle(4, 6, 1)
+        output = TestRectangle__str__.captured_output(r)
+        verify = "[Rectangle] ({}) 1/0 - 4/6\n".format(r.id)
+        self.assertEqual(output.getvalue(), verify)
+
+    def test_rectangle_str_hwxy(self):
+        r = Rectangle(4, 6, 1, 2)
+        output = TestRectangle__str__.captured_output(r)
+        verify = "[Rectangle] ({}) 1/2 - 4/6\n".format(r.id)
+        self.assertEqual(output.getvalue(), verify)
+
+    def test_rectangle_str_hwxyi(self):
+        r = Rectangle(4, 6, 1, 2, 30)
+        output = TestRectangle__str__.captured_output(r)
+        verify = "[Rectangle] (30) 1/2 - 4/6\n"
+        self.assertEqual(output.getvalue(), verify)
+
+class TestRectangleUpdate(unittest.TestCase):
+    """Define unittests for testing Rectangle args update method"""
+
+
+    def test_update_no_args(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update()
+        verify = "[Rectangle] (5) 3/4 - 1/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_one_args(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(6)
+        verify = "[Rectangle] (6) 3/4 - 1/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_two_args(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(6, 7)
+        verify = "[Rectangle] (6) 3/4 - 7/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_three_args(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(6, 7, 8)
+        verify = "[Rectangle] (6) 3/4 - 7/8"
+        self.assertEqual(str(r), verify)
+
+    def test_update_four_args(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(6, 7, 8, 9)
+        verify = "[Rectangle] (6) 9/4 - 7/8"
+        self.assertEqual(str(r), verify)
+
+    def test_update_five_args(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(6, 7, 8, 9, 10)
+        verify = "[Rectangle] (6) 9/10 - 7/8"
+        self.assertEqual(str(r), verify)
+
+    def test_update_six_args(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(6, 7, 8, 9, 10, 11)
+        verify = "[Rectangle] (6) 9/10 - 7/8"
+        self.assertEqual(str(r), verify)
+
+    def test_update_invalid_width(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(1, "1", 1, 1, 1)
+
+    def test_update_invalid_height(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r.update(1, 1, "1", 1, 1)
+
+    def test_update_invalid_x(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r.update(1, 1, 1, "1", 1)
+
+    def test_update_invalid_y(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r.update(1, 1, 1, 1, "1")
+
+    def test_update_negative_width(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(1, -1, 1, 1, 1)
+
+    def test_update_negative_height(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(1, 1, -1, 1, 1)
+
+    def test_update_negative_x(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r.update(1, 1, 1, -1, 1)
+
+    def test_update_negative_y(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r.update(1, 1, 1, 1, -1)
+
+    def test_update_zero_width(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r.update(1, 0, 1, 1, 1)
+
+    def test_update_zero_height(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r.update(1, 1, 0, 1, 1)
+
+class TestRectangleUpdateKwargs(unittest.TestCase):
+    """Define unittests for testing Rectangle kwargs update method"""
+
+    def test_update_height_kwarg(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(height=99)
+        verify = "[Rectangle] (5) 3/4 - 1/99"
+        self.assertEqual(str(r), verify)
+
+    def test_update_width_kwarg(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(width=99)
+        verify = "[Rectangle] (5) 3/4 - 99/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_y_kwarg(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(y=99)
+        verify = "[Rectangle] (5) 3/99 - 1/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_id_kwarg(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(id=99)
+        verify = "[Rectangle] (99) 3/4 - 1/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_x_kwarg(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(x=99)
+        verify = "[Rectangle] (5) 99/4 - 1/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_two_kwargs(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(id=99, x=99)
+        verify = "[Rectangle] (99) 99/4 - 1/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_three_kwargs(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(id=99, y=99, height=99)
+        verify = "[Rectangle] (99) 3/99 - 1/99"
+        self.assertEqual(str(r), verify)
+
+    def test_update_four_kwargs(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(id=99, x=99, y=99, width=99)
+        verify = "[Rectangle] (99) 99/99 - 99/2"
+        self.assertEqual(str(r), verify)
+
+    def test_update_five_kwargs(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(id=99, x=99, height=99, width=99, y=99)
+        verify = "[Rectangle] (99) 99/99 - 99/99"
+        self.assertEqual(str(r), verify)
 
 if __name__ == '__main__':
     unittest.main()
