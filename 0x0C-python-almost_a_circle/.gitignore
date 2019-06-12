@@ -24,5 +24,3 @@ Rectangle.json
 Square.json
 Rectangle.csv
 Square.csv
-tests/__init__.py
-tests/test_models/__init__.py
