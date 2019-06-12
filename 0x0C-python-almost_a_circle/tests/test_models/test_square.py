@@ -127,19 +127,19 @@ class TestSquareUpdate(unittest.TestCase):
     def test_square_update_two_args(self):
         r = Square(5)
         r.update(1, 2)
-        verify = "[Square] (1) 0/0 - 5"
+        verify = "[Square] (1) 0/0 - 2"
         self.assertEqual(str(r), verify)
 
     def test_square_update_three_args(self):
         r = Square(5)
         r.update(1, 2, 3)
-        verify = "[Square] (1) 3/0 - 5"
+        verify = "[Square] (1) 3/0 - 2"
         self.assertEqual(str(r), verify)
 
     def test_square_update_four_args(self):
         r = Square(5)
         r.update(1, 2, 3, 4)
-        verify = "[Square] (1) 3/4 - 5"
+        verify = "[Square] (1) 3/4 - 2"
         self.assertEqual(str(r), verify)
 
     def test_square_update_invalid_size(self):
