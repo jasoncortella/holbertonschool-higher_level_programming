@@ -63,7 +63,7 @@ class Base:
     def load_from_file(cls):
         """returns a list of instances"""
         try:
-            with open(cls.__name__ + ".json", 'r') as myFile:
+            with open(str(cls.__name__) + ".json", 'r') as myFile:
                 read = myFile.read()
         except:
             return []
