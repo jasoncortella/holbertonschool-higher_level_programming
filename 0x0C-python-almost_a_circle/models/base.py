@@ -62,16 +62,15 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """returns a list of instances"""
+        build_list = []
         try:
-            with open(str(cls.__name__) + ".json", 'r') as myFile:
-                read = myFile.read()
+            with open(cls.__name__ + ".json", 'r') as myFile:
+                read = Base.from_json_string(myFile.read())
+                for elm in read:
+                    build_list.append(cls.create(**elm))
+                return build_list
         except:
             return []
-        build_list = []
-        read_list = cls.from_json_string(read)
-        for elm in read_list:
-            build_list.append(cls.create(**elm))
-        return build_list
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
