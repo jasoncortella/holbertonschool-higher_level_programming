@@ -112,10 +112,14 @@ class TestSquare_Instantiation(unittest.TestCase):
 class TestSquareUpdate(unittest.TestCase):
     """Define unittests for testing Rectangle args update method"""
 
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
+
     def test_square_update_no_args(self):
         r = Square(5)
         r.update()
-        verify = "[Square] (5) 0/0 - 5"
+        verify = "[Square] (1) 0/0 - 5"
         self.assertEqual(str(r), verify)
 
     def test_square_update_one_args(self):
@@ -176,6 +180,18 @@ class TestSquareUpdate(unittest.TestCase):
         r = Square(1, 2, 3, 4)
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r.update(1, 0, 1, 1)
+
+class TestSquareDict(unittest.TestCase):
+    """Define unittests for testing Rectangle dict method"""
+
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
+
+    def test_square_dict_no_args(self):
+        r = Square(10, 1, 9)
+        verify = {'x': 1, 'y': 9, 'id': 1, 'size': 10}
+        self.assertEqual(r.to_dictionary(), verify)
 
 if __name__ == '__main__':
     unittest.main()

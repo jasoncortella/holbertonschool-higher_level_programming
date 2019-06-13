@@ -129,6 +129,10 @@ class TestRectangle_Instantiation(unittest.TestCase):
 class TestRectangleAttributes(unittest.TestCase):
     """Define unittests for testing Rectangle class initialization"""
 
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
+
     def test_width_neg_int_arg(self):
         """Test Rectangle width attribute with negative integer argument"""
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
@@ -322,6 +326,10 @@ class TestRectangleAttributes(unittest.TestCase):
 class TestRectangleArea(unittest.TestCase):
     """Define unittests for testing Rectangle area method"""
 
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
+
     def test_area(self):
         """Test rectangle area"""
         r = Rectangle(1, 2, 3, 4, 5)
@@ -342,6 +350,10 @@ class TestRectangleArea(unittest.TestCase):
 
 class TestRectangleDisplay(unittest.TestCase):
     """Define unittests for testing Rectangle stdout printing"""
+
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
 
     @staticmethod
     def captured_output(rectangle):
@@ -379,6 +391,10 @@ class TestRectangleDisplay(unittest.TestCase):
 class TestRectangle__str__(unittest.TestCase):
     """Define unittests for testing Rectangle __str__ method"""
 
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
+
     @staticmethod
     def captured_output(rectangle):
         output = io.StringIO()
@@ -414,6 +430,9 @@ class TestRectangle__str__(unittest.TestCase):
 class TestRectangleUpdate(unittest.TestCase):
     """Define unittests for testing Rectangle args update method"""
 
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
 
     def test_update_no_args(self):
         r = Rectangle(1, 2, 3, 4, 5)
@@ -510,6 +529,10 @@ class TestRectangleUpdate(unittest.TestCase):
 class TestRectangleUpdateKwargs(unittest.TestCase):
     """Define unittests for testing Rectangle kwargs update method"""
 
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
+
     def test_update_height_kwarg(self):
         r = Rectangle(1, 2, 3, 4, 5)
         r.update(height=99)
@@ -563,6 +586,19 @@ class TestRectangleUpdateKwargs(unittest.TestCase):
         r.update(id=99, x=99, height=99, width=99, y=99)
         verify = "[Rectangle] (99) 99/99 - 99/99"
         self.assertEqual(str(r), verify)
+
+
+class TestRectangleDict(unittest.TestCase):
+    """Define unittests for testing Rectangle dict method"""
+
+    def setUp(self):
+        """Reset nb_instances to 0"""
+        Base.test_reset()
+
+    def test_dict_no_args(self):
+        r = Rectangle(10, 2, 1, 9)
+        verify = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(r.to_dictionary(), verify)
 
 if __name__ == '__main__':
     unittest.main()
