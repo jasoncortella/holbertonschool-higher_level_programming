@@ -74,3 +74,19 @@
 ### 16. Say my name
 * File: 16-no_link.sql
 * a script that lists all records of the table second_table of the database hbtn_0c_0 in your MySQL server.
+
+### 17. Go to UTF8
+* File: 100-move_to_utf8.sql
+* a script that converts hbtn_0c_0 database to UTF8
+
+### 18. Temperatures #0
+* File: 101-avg_temperatures.sql
+* a script that displays the average temperature (Fahrenheit) by city ordered by temperature (descending).
+
+### 19. Temperatures #1
+* File: 102-top_city.sql
+* a script that displays the top 3 of cities temperature during July and August ordered by temperature (descending)
+
+### 20. Temperatures #2
+* File: 103-max_state.sql
+* a script that displays the max temperature of each state (ordered by State name).
