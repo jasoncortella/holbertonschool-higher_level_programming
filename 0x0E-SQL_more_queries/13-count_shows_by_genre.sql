@@ -4,7 +4,7 @@
    -- Results must be sorted in descending order by the number of shows linkeda
    -- The database name will be passed as an argument of the mysql command
 
-SELECT name AS genre, COUNT(*) AS number_shows FROM tv_genres
-JOIN tv_show_genres ON genre_id=tv_genres.id
+SELECT tv_genres.name AS genre, COUNT(*) AS number_shows FROM tv_genres
+JOIN tv_show_genres ON id=tv_show_genres.genre_id
 GROUP BY genre_id
 ORDER BY number_shows DESC;
