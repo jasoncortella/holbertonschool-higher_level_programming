@@ -2,7 +2,6 @@
    -- states description:
       -- id INT unique - auto generated, cant be null, is a primary key
       -- name VARCHAR(256) - can't be null
-   -- The database name will be passed as an argument of the mysql command
    -- If the table hbtn_0d_usa already exists, script should not fail
    -- If the table states already exists, script should not fail
 
