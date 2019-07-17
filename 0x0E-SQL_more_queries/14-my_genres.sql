@@ -1,8 +1,7 @@
--- lists all genres contained in hbtn_0d_tvshows
--- displays the number of shows linked to each
+-- lists all genres of the show Dexter.
    -- Each record should display:
-      -- <TV Show genre> - <Number of shows linked to this genre>
-   -- Results must be sorted in descending order by the number of shows linkeda
+      -- tv_genres.name
+   -- Results must be sorted in ascending order by the genre name
    -- The database name will be passed as an argument of the mysql command
 
 SELECT tv_genres.name FROM tv_genres
