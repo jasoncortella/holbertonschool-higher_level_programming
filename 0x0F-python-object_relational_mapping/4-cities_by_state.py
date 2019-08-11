@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-lists all states with a name starting with N (upper N)
-from the database hbtn_0e_0_usa, safe from injection
+lists all cities from the database hbtn_0e_4_usa
 """
 
 import MySQLdb
