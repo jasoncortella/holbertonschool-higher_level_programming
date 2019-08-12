@@ -6,7 +6,6 @@ from the database hbtn_0e_100_usa
 
 from sys import argv
 from relationship_state import Base, State
-import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from relationship_city import City
@@ -17,8 +16,8 @@ if __name__ == "__main__":
 
     Base.metadata.create_all(engine)
     session = Session(engine)
-    new_state = State(name='California')
-    new_state.cities.append(City(name='San Francisco'))
-    session.add(new_state)
+    newstate = State(name='California')
+    newstate.cities.append(City(name='San Francisco'))
+    session.add(newstate)
     session.commit()
     session.close()
