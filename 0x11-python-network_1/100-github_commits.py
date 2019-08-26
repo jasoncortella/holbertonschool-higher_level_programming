@@ -8,7 +8,6 @@ if __name__ == "__main__":
                                                               sys.argv[1])
     r = requests.get(url)
     commits = r.json()
-    for i in range(10):
-        print("{}: {}".format(commits[i].get("sha"),
-                              commits[i].get("commit").
-                              get("author").get("name")))
+    for line in commits[:10]:
+        print("{}: {}".format(line.get("sha"),
+                              line.get("commit").get("author").get("name")))
